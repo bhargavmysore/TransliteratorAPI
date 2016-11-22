@@ -5,6 +5,7 @@
  */
 package com.knsi.web;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -18,6 +19,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.codehaus.jackson.JsonNode;
 
 /**
  *
@@ -36,19 +38,16 @@ public class URLAccessorServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
-        response.setContentType("text/html;charset=UTF-8");
+        
+        response.setContentType("text/html/json;charset=UTF-8");
+        response.setHeader("Access-Control-Allow-Origin", "*");
         try (PrintWriter out = response.getWriter()) {
-            String []requestUrl = request.getRequestURI().split("/");
-//            for (int i = 0; i < requestUrl.length; i++) {
-//                out.println(requestUrl[i]+"<br>");
-//            }
-            
+            String []requestUrl = request.getRequestURI().split("/");           
             Class.forName("com.mysql.jdbc.Driver");
             
             String tableName = requestUrl[3];
             String destLanguage = requestUrl[4].toUpperCase();
             String srcLanguage = requestUrl[3].toUpperCase();
-            
             System.out.println(tableName+" "+destLanguage+" "+srcLanguage);
             
             String queryString = "SELECT "+destLanguage+" FROM "+tableName+" WHERE "+srcLanguage+"=?";
@@ -62,21 +61,27 @@ public class URLAccessorServlet extends HttpServlet {
                 ttc[i/3] = requestUrl[5].substring(i, i+3);
 
             }
-            for (int i = 0; i < ttc.length; i++) {
+             for (int i = 0; i < ttc.length; i++) {
                 
                 mPreparedStatement.setString(1, ttc[i]);
                 ResultSet rs = mPreparedStatement.executeQuery();
                 if(rs.next()){
                     returnString[i] = rs.getString(destLanguage);
+                }else{
+                    returnString[i] = ttc[i];
                 }
             }
             
+            String responseString = "[";
             for (int i = 0; i < returnString.length; i++) {
-                out.println(returnString[i]+" ");
+                responseString+="\""+returnString[i]+"\",";
+                //out.print( (char)Integer.parseInt(returnString[i],16));
             }
+         
+            responseString  = responseString.substring(0, responseString.length()-1);
+            responseString+="]";
             
-            
-            
+            out.print(responseString);
         }
     }
 
