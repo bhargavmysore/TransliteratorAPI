@@ -11,13 +11,13 @@
         <script type="text/javascript" src="${pageContext.request.contextPath}/materialize.min.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/common.js"></script>
     </head>
-    <body>
-        <nav style="height: 80px">
-            <div class="nav-wrapper" style="background-color: #D5DBDB; height: 80px">
-                <a href="#" class=" main-name brand-logo">TRANSLITERATE</a>
+    <body style="">
+        <nav style="height: 100px">
+            <div class="nav-wrapper" style="background-color: black; height: 100px;">
+                <a href="#" class=" main-name brand-logo center">TRANSLITERATOR</a>
             </div>
         </nav>
-        <div class="row">
+        <div class="row" style="margin-top: 4%;">
             <div class="col s12 m6 l6">
                 <div class="card-panel" style="height: 500px;">
                     <h5 style="color:#C70039;">SOURCE LANGUAGE</h5>
@@ -25,9 +25,10 @@
                 <div class="row" style="margin-top: 1%;">
                     <div class="col s12">
                         <ul class="tabs" id="srcList">
-                            <li class="tab col s3"><a href="#" class="active cust-clr" id="src-h">HINDI</a></li>
-                            <li class="tab col s3"><a href="#" class="cust-clr" id="src-k">KANNADA</a></li>
-                            <li class="tab col s3"><a href="#" class="cust-clr" id="src-t">TELUGU</a></li>
+                            <li class="tab col s3"><a href="#" class="active cust-clr">HINDI</a></li>
+                            <li class="tab col s3"><a href="#" class="cust-clr">KANNADA</a></li>
+                            <li class="tab col s3"><a href="#" class="cust-clr">TELUGU</a></li>
+                            <li class="tab col s3"><a href="#" class="cust-clr">MALAYALAM</a></li>
                         </ul>
                     </div>
    
@@ -46,12 +47,14 @@
                             <li class="tab col s3"><a href="#" class="active cust-clr">HINDI</a></li>
                             <li class="tab col s3"><a href="#" class="cust-clr">KANNADA</a></li>
                             <li class="tab col s3"><a href="#" class="cust-clr">TELUGU</a></li>
+                            <li class="tab col s3"><a href="#" class="cust-clr">MALAYALAM</a></li>
                         </ul>
                     </div>
                 </div>
-                    <textarea id="destText" style="height: 300px; font-size: 2rem;"></textarea>
+                    <textarea id="destText" style="height: 300px; font-size: 2rem;" ></textarea>
                 </div>
             </div>
         </div>        
+        <div class="chip" id="err" style="visibility: hidden;">Invalid Input/Language<i class="close">X</i></div>
     </body>
 </html>

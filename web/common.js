@@ -25,6 +25,8 @@ function startTrans(){
                             break;
                     case 2: baseurl+="telugu/";
                             break;
+                    case 3: baseurl+="malayalam/";
+                            break;
                 }
           }
       }
@@ -37,6 +39,8 @@ function startTrans(){
                     case 1: baseurl+="kannada/";
                             break;
                     case 2: baseurl+="telugu/";
+                            break;
+                    case 3: baseurl+="malayalam/";
                             break;
                 }
           }
@@ -67,11 +71,14 @@ function startTrans(){
 
                 var resJSON=xhp.responseText;
                 //console.log(resJSON);
-                var resArray=JSON.parse(resJSON);
-
+                try{
+                    var resArray=JSON.parse(resJSON);
+                }
+                catch(e){
+                    document.getElementById("err").style.visibility = "visible" ;
+                }
                 for (var i = 0; i < resArray.length; i++) {
                   res.innerHTML+=String.fromCharCode(parseInt(resArray[i],16));
-
                 }
                 res.innerHTML+=" ";
 
@@ -84,6 +91,4 @@ function startTrans(){
       };
       xhp.open("GET",finalurl,true);
       xhp.send();
-
-
     }

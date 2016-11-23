@@ -10,6 +10,10 @@
 }
 .main-name{
     margin-left: 2%; 
-    padding-top: 0.5% !important; 
-    color: black !important;
+    padding-top: 1% !important; 
+    color: white !important;
+}
+body{
+    font-family: 'proxima-nova-soft', 'Proxima Nova Soft', Helvetica, Arial, sans-serif;
+    background-color: rgba(190,190,199,0.85);
 }
