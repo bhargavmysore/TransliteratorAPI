@@ -11,15 +11,19 @@
         <script type="text/javascript" src="${pageContext.request.contextPath}/materialize.min.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/common.js"></script>
     </head>
-    <body style="">
-        <nav style="height: 100px">
+    <body>
+<!--        <nav style="height: 100px">
             <div class="nav-wrapper" style="background-color: black; height: 100px;">
                 <a href="#" class=" main-name brand-logo center">TRANSLITERATOR</a>
             </div>
-        </nav>
+        </nav>-->
+        <div>
+            <h2 class="cust-clr" style="text-align: center; margin-top: 3%;">TRANSLITERATOR</h2>
+            <p class="cust-clr" style="text-align: center; margin-top: -1%; font-size: 1.3rem; margin-bottom: -1%;">Convergence Between Languages...</p>
+        </div>
         <div class="row" style="margin-top: 4%;">
             <div class="col s12 m6 l6">
-                <div class="card-panel" style="height: 500px;">
+                <div class="card-panel" style="height: 500px; border-radius: 25px;">
                     <h5 style="color:#C70039;">SOURCE LANGUAGE</h5>
                    
                 <div class="row" style="margin-top: 1%;">
@@ -34,12 +38,12 @@
    
                 </div>
                         <textarea id="srcText" style="height: 300px;"></textarea>
-                        <button class="waves-effect btn right trans-btn" name="tr-btn" onclick="startTrans()">Transliterate</button>
+                        <button class="waves-effect btn right trans-btn" name="tr-btn" onclick="startTrans()" style="border-radius: 25px;">Transliterate</button>
                 </div>
                
             </div>
             <div class="col s12 m6 l6">
-                <div class="card-panel" style="height: 500px;">
+                <div class="card-panel" style="height: 500px; border-radius: 25px;">
                     <h5 style="color:#C70039;">DESTINATION LANGUAGE</h5>
                 <div class="row" style="margin-top: 1%;">
                     <div class="col s12">
