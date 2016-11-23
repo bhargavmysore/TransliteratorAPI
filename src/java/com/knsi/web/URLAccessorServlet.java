@@ -5,7 +5,6 @@
  */
 package com.knsi.web;
 
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -19,7 +18,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.codehaus.jackson.JsonNode;
 
 /**
  *
@@ -51,7 +49,7 @@ public class URLAccessorServlet extends HttpServlet {
             System.out.println(tableName+" "+destLanguage+" "+srcLanguage);
             
             String queryString = "SELECT "+destLanguage+" FROM "+tableName+" WHERE "+srcLanguage+"=?";
-            Connection mConnection = DriverManager.getConnection("jdbc:mysql://localhost:8889/IISC","root","root");
+            Connection mConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/transliteratorapi","root","");
             
             PreparedStatement mPreparedStatement = mConnection.prepareStatement(queryString);
             
